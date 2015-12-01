@@ -49,7 +49,7 @@
     for (var i = 0; i < this.asteroids.length - 1; i++) {
       for (var j = i + 1; j < this.asteroids.length; j++) {
         if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
-          alert("COLLISION");
+          this.asteroids[i].collideWith(this.asteroids[j]);
         }
       }
     }
@@ -61,6 +61,9 @@
   };
 
   Game.prototype.remove = function (asteroid) {
-    // body...
+    // debugger;
+    var idx = this.asteroids.indexOf(asteroid);
+    var pos = this.randomPosition();
+    this.asteroids[idx] = new Asteroids.Asteroid({ pos: pos, game: this });
   };
 })();
