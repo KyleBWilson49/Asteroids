@@ -44,4 +44,23 @@
       asteroid.move();
     });
   };
+
+  Game.prototype.checkCollisions = function () {
+    for (var i = 0; i < this.asteroids.length - 1; i++) {
+      for (var j = i + 1; j < this.asteroids.length; j++) {
+        if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
+          alert("COLLISION");
+        }
+      }
+    }
+  };
+
+  Game.prototype.step = function () {
+    this.moveObjects();
+    this.checkCollisions();
+  };
+
+  Game.prototype.remove = function (asteroid) {
+    // body...
+  };
 })();
