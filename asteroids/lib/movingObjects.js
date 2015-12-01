@@ -9,7 +9,6 @@
     this.radius = options.radius;
     this.color = options.color;
     this.game = options.game;
-    // debugger
   };
 
   MovingObject.prototype.draw = function (ctx) {
@@ -32,7 +31,7 @@
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
 
-    this.pos = this.game.wrap(this.pos);
+    this.pos = this.game.wrap(this);
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {

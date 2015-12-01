@@ -21,14 +21,22 @@
     return [x, y];
   };
 
-  Game.prototype.wrap = function (pos) {
-    var x = pos[0];
-    var y = pos[1];
+  Game.prototype.wrap = function (asteroid) {
+    var pos = asteroid.pos
 
-    x = ((x + this.DIM_X) % this.DIM_X);
-    y = ((y + this.DIM_Y) % this.DIM_Y);
+    return [
+      wrap(pos[0], this.DIM_X), wrap(pos[1], this.DIM_Y)
+    ];
 
-    return [x, y];
+    function wrap(coord, max) {
+      if ((coord + asteroid.radius) < 0) {
+        return max - (coord  % max);
+      } else if ((coord - asteroid.radius) > max) {
+        return coord % max;
+      } else {
+        return coord;
+      }
+    }
   };
 
   Game.prototype.draw = function (ctx) {
